@@ -9,6 +9,7 @@ function App() {
   const chatContainerRef = useRef(null);
 
   // Scroll to the latest message when chatHistory updates
+  // This comment for testing git
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
