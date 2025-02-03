@@ -6,23 +6,10 @@ import ChatMessage from './components/ChatMessage';
 
 function App() {
   const [chatHistory, setChatHistory] = useState([]);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const chatContainerRef = useRef(null);
 
   // Scroll to the latest message when chatHistory updates
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
-  // This comment for testing git
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -62,38 +49,92 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-screen">
-        {/* Chatbot Header */}
-        <div className="flex justify-between items-center py-2 px-3 rounded-t-lg shadow-lg text-white bg-black w-[450px]">
-          <div className="flex items-center gap-1">
-            <ChatBotIcon />
-            <h1 className="text-lg font-semibold">TravelBot</h1>
-          </div>
-          <button className="p-2 hover:bg-slate-700 rounded">
-            <i className="fa-solid fa-arrow-up-from-bracket"></i>
-          </button>
-        </div>
-
-        {/* Chat Area */}
-        <div
-          ref={chatContainerRef}
-          className="py-2 px-2 shadow-lg w-[450px] h-[500px] overflow-y-auto bg-white flex flex-col rounded-b-lg pb-20 mb-3"
+      <div className="fixed bottom-6 right-6 flex flex-col items-end z-50">
+        {/* Chat Toggle Button */}
+        <button
+          onClick={() => setIsChatOpen(!isChatOpen)}
+          className="bg-gradient-to-r from-indigo-600 to-blue-500 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
+          title={isChatOpen ? "Close Chat" : "Open Chat"}
         >
-          <div className="flex flex-col flex-grow space-y-4 p-2 pb-6">
-            <div className="flex gap-2 justify-start items-start max-w-[70%]">
-              <SendingIcon />
-              <p className="font-normal bg-sky-100 px-4 py-2 rounded-r-lg rounded-bl-lg shadow-lg w-full">
-                Hey there! <br /> How can I help you today?
-              </p>
-            </div>
-            {chatHistory.map((chat, index) => (
-              <ChatMessage chat={chat} key={index} />
-            ))}
+          <div className="w-8 h-6 mb-3">
+            <ChatBotIcon />
           </div>
-        </div>
+        </button>
 
-        {/* Fixed Message Input Field */}
-        <UseForm chatHistory={chatHistory} setChatHistory={setChatHistory} generateChatBotResponse={generateChatBotResponse} />
+        {/* Chat Window */}
+        {isChatOpen && (
+          <div className="absolute bottom-16 right-0 mb-2">
+            <div className="w-[400px] h-[500px] rounded-lg shadow-2xl bg-white overflow-hidden flex flex-col">
+              {/* Chatbot Header */}
+              <div className="bg-gradient-to-r from-indigo-600 to-blue-500 px-4 py-4">
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                      <ChatBotIcon />
+                    </div>
+                    <div>
+                      <h1 className="text-lg font-bold text-white">TravelBot</h1>
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                        <p className="text-xs text-blue-100">Online | AI Travel Assistant</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <button className="p-2 hover:bg-white/10 rounded-full transition-all duration-300" 
+                            title="Settings">
+                      <i className="fa-solid fa-gear text-white/80 text-lg"></i>
+                    </button>
+                    <button className="p-2 hover:bg-white/10 rounded-full transition-all duration-300" 
+                            title="Share Chat">
+                      <i className="fa-solid fa-share text-white/80 text-lg"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Chat Area */}
+              <div
+                ref={chatContainerRef}
+                className="flex-1 overflow-y-auto bg-gray-50 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+              >
+                <div className="flex flex-col space-y-4 p-4 pb-6">
+                  {/* Welcome Message */}
+                  <div className="flex gap-3 items-start max-w-[85%]">
+                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <i className="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div className="flex flex-col">
+                      <div className="bg-white p-3 rounded-lg rounded-tl-none shadow-sm">
+                        <p className="text-gray-800">
+                          👋 Welcome to TravelBot! I'm your personal AI travel assistant for Sri Lanka. 
+                          How can I help plan your perfect journey today?
+                        </p>
+                      </div>
+                      <span className="text-xs text-gray-500 mt-1">
+                        {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Chat Messages */}
+                  {chatHistory.map((chat, index) => (
+                    <ChatMessage chat={chat} key={index} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Message Input */}
+              <div className="mt-auto">
+                <UseForm 
+                  chatHistory={chatHistory} 
+                  setChatHistory={setChatHistory} 
+                  generateChatBotResponse={generateChatBotResponse} 
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
