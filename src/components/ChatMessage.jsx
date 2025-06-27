@@ -23,49 +23,119 @@ function ChatMessage({ chat, index }) {
   const [isDisliked, setIsDisliked] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
 
-  // Format message text with better parsing
+  // Enhanced message formatting with better structure and readability
   const formatMessage = (text) => {
     if (!text) return text;
     
-    // Split into paragraphs
-    const paragraphs = text.split('\n\n');
+    // Clean up the text first
+    let cleanText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold formatting
+    cleanText = cleanText.replace(/\*(.*?)\*/g, '<em>$1</em>'); // Italic formatting
     
-    return paragraphs.map((paragraph, pIndex) => {
-      // Handle bullet points
-      if (paragraph.includes('•') || paragraph.includes('-')) {
-        const lines = paragraph.split('\n');
+    // Split into sections and paragraphs
+    const sections = cleanText.split('\n\n');
+    
+    return sections.map((section, sIndex) => {
+      // Handle headings (lines that end with : or are in ALL CAPS)
+      if (section.includes(':') && section.split('\n')[0].endsWith(':') && section.split('\n')[0].length < 50) {
+        const lines = section.split('\n');
+        const heading = lines[0];
+        const content = lines.slice(1).join('\n');
+        
         return (
-          <div key={pIndex} className="space-y-1">
-            {lines.map((line, lIndex) => {
-              if (line.trim().startsWith('•') || line.trim().startsWith('-')) {
-                return (
-                  <div key={lIndex} className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-1">•</span>
-                    <span>{line.replace(/^[•-]\s*/, '')}</span>
-                  </div>
-                );
-              }
-              return <p key={lIndex} className="mb-2">{line}</p>;
-            })}
+          <div key={sIndex} className="mb-4">
+            <h4 className="font-semibold text-gray-800 text-sm mb-3 flex items-center gap-2 border-b border-gray-200 pb-2">
+              {heading.includes('Pro Tips') && '💡'}
+              {heading.includes('Destination') && '📍'}
+              {heading.includes('Transport') && '🚗'}
+              {heading.includes('Food') && '🍽️'}
+              {heading.includes('Cost') && '💰'}
+              {heading.includes('Weather') && '🌤️'}
+              {heading.includes('Accommodation') && '🏨'}
+              {heading.includes('Activity') && '🎯'}
+              <span dangerouslySetInnerHTML={{ __html: heading.replace(':', '') }} />
+            </h4>
+            <div className={`ml-2 space-y-2 ${getContentClass(heading)}`}>
+              {formatContent(content)}
+            </div>
+          </div>
+        );
+      }
+      
+      return <div key={sIndex} className="mb-3">{formatContent(section)}</div>;
+    });
+  };
+
+  // Helper function to get content-specific styling
+  const getContentClass = (heading) => {
+    const lowerHeading = heading.toLowerCase();
+    if (lowerHeading.includes('destination')) return 'destination-section border-l-2 pl-3';
+    if (lowerHeading.includes('transport')) return 'transport-section border-l-2 pl-3';
+    if (lowerHeading.includes('food')) return 'food-section border-l-2 pl-3';
+    if (lowerHeading.includes('cost')) return 'cost-section border-l-2 pl-3';
+    if (lowerHeading.includes('weather')) return 'weather-section border-l-2 pl-3';
+    return '';
+  };
+
+  // Helper function to format content within sections
+  const formatContent = (content) => {
+    const lines = content.split('\n');
+    
+    return lines.map((line, lIndex) => {
+      // Handle bullet points
+      if (line.trim().startsWith('•') || line.trim().startsWith('-')) {
+        return (
+          <div key={lIndex} className="flex items-start gap-3 mb-2 typing-effect">
+            <span className="text-blue-500 mt-1 flex-shrink-0 font-bold">•</span>
+            <span 
+              className="text-gray-700 leading-relaxed smooth-transition"
+              dangerouslySetInnerHTML={{ __html: line.replace(/^[•-]\s*/, '') }}
+            />
           </div>
         );
       }
       
       // Handle numbered lists
-      if (/^\d+\./.test(paragraph.trim())) {
-        const lines = paragraph.split('\n');
+      if (/^\d+\./.test(line.trim())) {
+        const number = line.match(/^\d+/)[0];
+        const text = line.replace(/^\d+\.\s*/, '');
         return (
-          <ol key={pIndex} className="list-decimal list-inside space-y-1">
-            {lines.map((line, lIndex) => (
-              <li key={lIndex}>{line.replace(/^\d+\.\s*/, '')}</li>
-            ))}
-          </ol>
+          <div key={lIndex} className="flex items-start gap-3 mb-2 typing-effect">
+            <span className="number-badge text-white text-xs font-semibold px-2 py-1 rounded-full flex-shrink-0 mt-0.5">
+              {number}
+            </span>
+            <span 
+              className="text-gray-700 leading-relaxed smooth-transition"
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
+          </div>
         );
       }
       
-      // Regular paragraph
-      return <p key={pIndex} className="mb-3 last:mb-0">{paragraph}</p>;
-    });
+      // Handle special sections (Pro Tips, Important notes, etc.)
+      if (line.includes('💡') || line.includes('⚠️') || line.includes('ℹ️')) {
+        return (
+          <div key={lIndex} className="pro-tip p-3 my-3 rounded-r-lg">
+            <span 
+              className="text-gray-700 text-sm leading-relaxed font-medium"
+              dangerouslySetInnerHTML={{ __html: line }}
+            />
+          </div>
+        );
+      }
+      
+      // Regular text with improved spacing and formatting
+      if (line.trim()) {
+        return (
+          <p 
+            key={lIndex} 
+            className="text-gray-700 leading-relaxed mb-2 last:mb-0 typing-effect chat-message"
+            dangerouslySetInnerHTML={{ __html: line.trim() }}
+          />
+        );
+      }
+      
+      return null;
+    }).filter(Boolean);
   };
 
   const handleCopy = async () => {
@@ -203,9 +273,19 @@ function ChatMessage({ chat, index }) {
               </div>
             )}
 
-            {/* Message Content */}
-            <div className="break-words leading-relaxed whitespace-pre-wrap">
-              {formatMessage(chat.text)}
+            {/* Message Content with Enhanced Styling */}
+            <div className={`break-words leading-relaxed ${
+              isUser ? 'text-white' : 'text-gray-800'
+            }`}>
+              {isUser ? (
+                <div className="whitespace-pre-wrap font-medium">
+                  {chat.text}
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {formatMessage(chat.text)}
+                </div>
+              )}
             </div>
 
             {/* Travel-specific enhancements for bot messages */}

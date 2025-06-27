@@ -60,8 +60,8 @@ const TrainScheduleWidget = () => {
           <Train className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="font-semibold text-white">Train Schedules</h3>
-          <p className="text-white/70 text-sm">Sri Lanka Railways</p>
+          <h3 className="font-semibold text-black">Train Schedules</h3>
+          <p className="text-black/70 text-sm">Sri Lanka Railways</p>
         </div>
       </div>
 
@@ -79,8 +79,8 @@ const TrainScheduleWidget = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="text-white font-medium text-sm">{route.name}</div>
-            <div className="text-white/60 text-xs">{route.duration}</div>
+            <div className="text-black font-medium text-sm">{route.name}</div>
+            <div className="text-black/60 text-xs">{route.duration}</div>
           </motion.button>
         ))}
       </div>
@@ -101,18 +101,18 @@ const TrainScheduleWidget = () => {
               <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-lg p-4 border border-green-400/30">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-green-400 text-xs font-medium">NEXT DEPARTURE</span>
-                  <div className="flex items-center gap-1 text-white/60 text-xs">
+                  <div className="flex items-center gap-1 text-black/60 text-xs">
                     <Clock className="w-3 h-3" />
                     {currentTime.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' })}
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-white font-semibold">{nextTrain.time}</div>
-                    <div className="text-white/80 text-sm">{nextTrain.train}</div>
-                    <div className="text-white/60 text-xs">{nextTrain.class} • {nextTrain.price}</div>
+                    <div className="text-black font-semibold">{nextTrain.time}</div>
+                    <div className="text-black/80 text-sm">{nextTrain.train}</div>
+                    <div className="text-black/60 text-xs">{nextTrain.class} • {nextTrain.price}</div>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-white/60" />
+                  <ChevronRight className="w-5 h-5 text-black/60" />
                 </div>
               </div>
             );
@@ -130,12 +130,12 @@ const TrainScheduleWidget = () => {
             whileHover={{ x: 5 }}
           >
             <div className="flex items-center gap-3">
-              <div className="text-white font-medium">{schedule.time}</div>
-              <div className="text-white/70 text-sm">{schedule.train}</div>
+              <div className="text-black font-medium">{schedule.time}</div>
+              <div className="text-black/70 text-sm">{schedule.train}</div>
             </div>
             <div className="text-right">
-              <div className="text-white/80 text-sm">{schedule.class}</div>
-              <div className="text-white/60 text-xs">{schedule.price}</div>
+              <div className="text-black/80 text-sm">{schedule.class}</div>
+              <div className="text-black/60 text-xs">{schedule.price}</div>
             </div>
           </motion.div>
         ))}

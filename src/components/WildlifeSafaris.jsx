@@ -40,7 +40,7 @@ const WildlifeSafaris = () => {
       ],
       safariTimes: [
         { time: '06:00 - 10:00', type: 'Morning Safari', temp: '24°C', activity: 'High' },
-        { time: '14:30 - 18:30', type: 'Evening Safari', temp: '28°C', activity: 'Very High' }
+        { time: '14:30 - 18:30', type: 'Evening Safari', temp: '28°C', activity: 'High' }
       ]
     },
     'udawalawe': {
@@ -124,7 +124,7 @@ const WildlifeSafaris = () => {
       ],
       safariTimes: [
         { time: '06:30 - 10:30', type: 'Morning Safari', temp: '27°C', activity: 'Medium' },
-        { time: '15:30 - 19:30', type: 'Evening Safari', temp: '31°C', activity: 'Very High' }
+        { time: '15:30 - 19:30', type: 'Evening Safari', temp: '31°C', activity: 'High' }
       ]
     }
   };
@@ -157,8 +157,8 @@ const WildlifeSafaris = () => {
           <Binoculars className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="font-semibold text-white">Wildlife Safaris</h3>
-          <p className="text-white/70 text-sm">National Parks Guide</p>
+          <h3 className="font-semibold text-black">Wildlife Safaris</h3>
+          <p className="text-black/70 text-sm">National Parks Guide</p>
         </div>
       </div>
 
@@ -176,11 +176,11 @@ const WildlifeSafaris = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="text-white font-medium text-sm">{park.name}</div>
-            <div className="text-white/60 text-xs">{park.location}</div>
+            <div className="text-black font-medium text-sm">{park.name}</div>
+            <div className="text-black/60 text-xs">{park.location}</div>
             <div className="flex items-center justify-between mt-1">
-              <span className="text-white/80 text-xs">⭐ {park.rating}</span>
-              <span className="text-white/60 text-xs">{park.price}</span>
+              <span className="text-black/80 text-xs">⭐ {park.rating}</span>
+              <span className="text-black/60 text-xs">{park.price}</span>
             </div>
           </motion.button>
         ))}
@@ -203,33 +203,33 @@ const WildlifeSafaris = () => {
                 {/* Park Info */}
                 <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-lg p-4 border border-amber-400/30">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-white font-semibold">{park.name}</h4>
-                    <div className="text-white/60 text-xs">Est. {park.established}</div>
+                    <h4 className="text-black font-semibold">{park.name}</h4>
+                    <div className="text-black/60 text-xs">Est. {park.established}</div>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3 mb-3">
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-amber-400" />
-                      <span className="text-white/80 text-sm">{park.location}</span>
+                      <span className="text-black/80 text-sm">{park.location}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Eye className="w-4 h-4 text-amber-400" />
-                      <span className="text-white/80 text-sm">{park.area}</span>
+                      <span className="text-black/80 text-sm">{park.area}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-amber-400" />
-                      <span className="text-white/80 text-sm">{park.bestTime}</span>
+                      <span className="text-black/80 text-sm">{park.bestTime}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Star className="w-4 h-4 text-amber-400" />
-                      <span className="text-white/80 text-sm">{park.leopardDensity}</span>
+                      <span className="text-black/80 text-sm">{park.leopardDensity}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Safari Times */}
                 <div>
-                  <h5 className="text-white/80 text-sm font-medium mb-2">Safari Times</h5>
+                  <h5 className="text-black/80 text-sm font-medium mb-2">Safari Times</h5>
                   <div className="space-y-2">
                     {park.safariTimes.map((safari, index) => (
                       <motion.div
@@ -240,12 +240,12 @@ const WildlifeSafaris = () => {
                         <div className="flex items-center gap-3">
                           <div className="flex items-center gap-1">
                             {index === 0 ? <Sunrise className="w-4 h-4 text-yellow-400" /> : <Camera className="w-4 h-4 text-orange-400" />}
-                            <div className="text-white font-medium text-sm">{safari.time}</div>
+                            <div className="text-black font-medium text-sm">{safari.time}</div>
                           </div>
-                          <div className="text-white/70 text-sm">{safari.type}</div>
+                          <div className="text-black/70 text-sm">{safari.type}</div>
                         </div>
                         <div className="text-right">
-                          <div className="text-white/80 text-sm">{safari.temp}</div>
+                          <div className="text-black/80 text-sm">{safari.temp}</div>
                           <span className={`text-xs px-2 py-1 rounded-full ${getActivityColor(safari.activity)}`}>
                             {safari.activity}
                           </span>
@@ -257,7 +257,7 @@ const WildlifeSafaris = () => {
 
                 {/* Wildlife Spotting */}
                 <div>
-                  <h5 className="text-white/80 text-sm font-medium mb-2">Wildlife Spotting Chances</h5>
+                  <h5 className="text-black/80 text-sm font-medium mb-2">Wildlife Spotting Chances</h5>
                   <div className="grid grid-cols-1 gap-2">
                     {park.wildlife.map((animal, index) => (
                       <motion.div
@@ -269,7 +269,7 @@ const WildlifeSafaris = () => {
                       >
                         <div className="flex items-center gap-3">
                           <span className="text-xl">{animal.icon}</span>
-                          <div className="text-white/80 text-sm">{animal.species}</div>
+                          <div className="text-black/80 text-sm">{animal.species}</div>
                         </div>
                         <div className="flex items-center gap-2">
                           <div className="w-16 bg-white/10 rounded-full h-2 overflow-hidden">
@@ -291,12 +291,12 @@ const WildlifeSafaris = () => {
 
                 {/* Park Highlights */}
                 <div>
-                  <h5 className="text-white/80 text-sm font-medium mb-2">Park Highlights</h5>
+                  <h5 className="text-black/80 text-sm font-medium mb-2">Park Highlights</h5>
                   <div className="space-y-2">
                     {park.highlights.map((highlight, index) => (
                       <motion.div
                         key={index}
-                        className="flex items-start gap-2 p-2 bg-white/5 rounded text-white/70 text-sm"
+                        className="flex items-start gap-2 p-2 bg-white/5 rounded text-black/70 text-sm"
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}

@@ -100,8 +100,8 @@ const TrekkingGuide = () => {
           <Mountain className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="font-semibold text-white">Trekking Guide</h3>
-          <p className="text-white/70 text-sm">Mountain Adventures</p>
+          <h3 className="font-semibold text-black">Trekking Guide</h3>
+          <p className="text-black/70 text-sm">Mountain Adventures</p>
         </div>
       </div>
 
@@ -119,7 +119,7 @@ const TrekkingGuide = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="text-white font-medium text-sm">{trek.name}</div>
+            <div className="text-black font-medium text-sm">{trek.name}</div>
             <div className={`inline-block px-2 py-1 rounded-full text-xs mt-1 ${getDifficultyColor(trek.difficulty)}`}>
               {trek.difficulty}
             </div>
@@ -142,21 +142,21 @@ const TrekkingGuide = () => {
               <div className="space-y-4">
                 {/* Trek Info */}
                 <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-lg p-4 border border-green-400/30">
-                  <h4 className="text-white font-semibold mb-2">{trek.name}</h4>
-                  <p className="text-white/80 text-sm mb-3">{trek.description}</p>
-                  
+                  <h4 className="text-black font-semibold mb-2">{trek.name}</h4>
+                  <p className="text-black/80 text-sm mb-3">{trek.description}</p>
+
                   <div className="grid grid-cols-2 gap-3">
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-green-400" />
-                      <span className="text-white/80 text-sm">{trek.duration}</span>
+                      <span className="text-black/80 text-sm">{trek.duration}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Mountain className="w-4 h-4 text-green-400" />
-                      <span className="text-white/80 text-sm">{trek.elevation}</span>
+                      <span className="text-black/80 text-sm">{trek.elevation}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Star className="w-4 h-4 text-green-400" />
-                      <span className="text-white/80 text-sm">{trek.bestTime}</span>
+                      <span className="text-black/80 text-sm">{trek.bestTime}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Users className="w-4 h-4 text-green-400" />
@@ -178,8 +178,8 @@ const TrekkingGuide = () => {
                         whileHover={{ x: 5 }}
                       >
                         <div>
-                          <div className="text-white font-medium text-sm">{route.name}</div>
-                          <div className="text-white/60 text-xs">{route.time}</div>
+                          <div className="text-black font-medium text-sm">{route.name}</div>
+                          <div className="text-black/60 text-xs">{route.time}</div>
                         </div>
                         <span className={`text-xs px-2 py-1 rounded-full ${getDifficultyColor(route.difficulty)}`}>
                           {route.difficulty}
@@ -191,12 +191,12 @@ const TrekkingGuide = () => {
 
                 {/* Tips */}
                 <div>
-                  <h5 className="text-white/80 text-sm font-medium mb-2">Pro Tips</h5>
+                  <h5 className="text-black/80 text-sm font-medium mb-2">Pro Tips</h5>
                   <div className="space-y-2">
                     {trek.tips.map((tip, index) => (
                       <motion.div
                         key={index}
-                        className="flex items-start gap-2 p-2 bg-white/5 rounded text-white/70 text-sm"
+                        className="flex items-start gap-2 p-2 bg-white/5 rounded text-black/70 text-sm"
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}

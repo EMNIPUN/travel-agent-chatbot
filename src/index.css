@@ -82,3 +82,93 @@ body {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+/* Enhanced chat message styling */
+.chat-message {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.chat-message h4 {
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+}
+
+.chat-message strong {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.chat-message em {
+    font-style: italic;
+    color: #6b7280;
+}
+
+/* Enhanced bullet points */
+.bullet-point {
+    position: relative;
+    padding-left: 20px;
+}
+
+.bullet-point::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Pro tips styling */
+.pro-tip {
+    background: linear-gradient(90deg, #dbeafe 0%, #f0f9ff 100%);
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 8px 8px 0;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-10px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Number badges for ordered lists */
+.number-badge {
+    background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Travel-specific color coding */
+.destination-section { border-left-color: #10b981; background-color: #ecfdf5; }
+.transport-section { border-left-color: #f59e0b; background-color: #fffbeb; }
+.food-section { border-left-color: #ef4444; background-color: #fef2f2; }
+.cost-section { border-left-color: #8b5cf6; background-color: #f5f3ff; }
+.weather-section { border-left-color: #06b6d4; background-color: #cffafe; }
+
+/* Typing animation for bot responses */
+.typing-effect {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth transitions for interactive elements */
+.smooth-transition {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced focus states for accessibility */
+.focus-ring:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}

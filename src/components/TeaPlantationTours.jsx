@@ -129,8 +129,8 @@ const TeaPlantationTours = () => {
           <Leaf className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="font-semibold text-white">Tea Plantation Tours</h3>
-          <p className="text-white/70 text-sm">Ceylon Tea Experience</p>
+          <h3 className="font-semibold text-black">Tea Plantation Tours</h3>
+          <p className="text-black/70 text-sm">Ceylon Tea Experience</p>
         </div>
       </div>
 
@@ -150,8 +150,8 @@ const TeaPlantationTours = () => {
           >
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-white font-medium text-sm">{plantation.name}</div>
-                <div className="text-white/60 text-xs">{plantation.location} • {plantation.altitude}</div>
+                <div className="text-black font-medium text-sm">{plantation.name}</div>
+                <div className="text-black/60 text-xs">{plantation.location} • {plantation.altitude}</div>
               </div>
               <div className="text-right">
                 <div className="text-white/80 text-sm">⭐ {plantation.rating}</div>
@@ -180,26 +180,26 @@ const TeaPlantationTours = () => {
                 {/* Plantation Info */}
                 <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-lg p-4 border border-green-400/30">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-white font-semibold">{plantation.name}</h4>
-                    <div className="text-white/60 text-xs">Est. {plantation.established}</div>
+                    <h4 className="text-black font-semibold">{plantation.name}</h4>
+                    <div className="text-black/60 text-xs">Est. {plantation.established}</div>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3 mb-3">
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-green-400" />
-                      <span className="text-white/80 text-sm">{plantation.location}</span>
+                      <span className="text-black/80 text-sm">{plantation.location}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Coffee className="w-4 h-4 text-green-400" />
-                      <span className="text-white/80 text-sm">{plantation.specialty}</span>
+                      <span className="text-black/80 text-sm">{plantation.specialty}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-green-400" />
-                      <span className="text-white/80 text-sm">{plantation.duration}</span>
+                      <span className="text-black/80 text-sm">{plantation.duration}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Factory className="w-4 h-4 text-green-400" />
-                      <span className="text-white/80 text-sm">{plantation.altitude}</span>
+                      <span className="text-black/80 text-sm">{plantation.altitude}</span>
                     </div>
                   </div>
                 </div>
@@ -208,27 +208,27 @@ const TeaPlantationTours = () => {
                 <div className="bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-lg p-4 border border-amber-400/30">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-amber-400 text-xs font-medium">NEXT TOUR</span>
-                    <div className="flex items-center gap-1 text-white/60 text-xs">
+                    <div className="flex items-center gap-1 text-black/60 text-xs">
                       <Clock className="w-3 h-3" />
                       {currentTime.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' })}
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-white font-semibold">{nextTour.time}</div>
-                      <div className="text-white/80 text-sm">{nextTour.type}</div>
-                      <div className="text-white/60 text-xs flex items-center gap-1">
+                      <div className="text-black font-semibold">{nextTour.time}</div>
+                      <div className="text-black/80 text-sm">{nextTour.type}</div>
+                      <div className="text-black/60 text-xs flex items-center gap-1">
                         <Users className="w-3 h-3" />
                         {nextTour.available} spots available
                       </div>
                     </div>
-                    <ChevronRight className="w-5 h-5 text-white/60" />
+                    <ChevronRight className="w-5 h-5 text-black/60" />
                   </div>
                 </div>
 
                 {/* Today's Tours */}
                 <div>
-                  <h5 className="text-white/80 text-sm font-medium mb-2">Today's Tours</h5>
+                  <h5 className="text-black/80 text-sm font-medium mb-2">Today's Tours</h5>
                   <div className="space-y-2">
                     {plantation.tours.map((tour, index) => (
                       <motion.div
@@ -237,15 +237,15 @@ const TeaPlantationTours = () => {
                         whileHover={{ x: 5 }}
                       >
                         <div className="flex items-center gap-3">
-                          <div className="text-white font-medium">{tour.time}</div>
-                          <div className="text-white/70 text-sm">{tour.type}</div>
+                          <div className="text-black font-medium">{tour.time}</div>
+                          <div className="text-black/70 text-sm">{tour.type}</div>
                         </div>
                         <div className="text-right">
-                          <div className="text-white/80 text-sm flex items-center gap-1">
+                          <div className="text-black/80 text-sm flex items-center gap-1">
                             <Users className="w-3 h-3" />
                             {tour.available}
                           </div>
-                          <div className="text-white/60 text-xs">available</div>
+                          <div className="text-black/60 text-xs">available</div>
                         </div>
                       </motion.div>
                     ))}
@@ -254,7 +254,7 @@ const TeaPlantationTours = () => {
 
                 {/* Tea Varieties */}
                 <div>
-                  <h5 className="text-white/80 text-sm font-medium mb-2">Tea Varieties</h5>
+                  <h5 className="text-black/80 text-sm font-medium mb-2">Tea Varieties</h5>
                   <div className="space-y-2">
                     {plantation.teaTypes.map((tea, index) => (
                       <motion.div
@@ -265,12 +265,12 @@ const TeaPlantationTours = () => {
                         transition={{ delay: index * 0.1 }}
                       >
                         <div>
-                          <div className="text-white font-medium text-sm">{tea.name}</div>
+                          <div className="text-black font-medium text-sm">{tea.name}</div>
                           <span className={`inline-block text-xs px-2 py-1 rounded-full mt-1 ${getStrengthColor(tea.strength)}`}>
                             {tea.strength}
                           </span>
                         </div>
-                        <div className="text-white/80 text-sm">{tea.price}</div>
+                        <div className="text-black/80 text-sm">{tea.price}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -278,12 +278,12 @@ const TeaPlantationTours = () => {
 
                 {/* Highlights */}
                 <div>
-                  <h5 className="text-white/80 text-sm font-medium mb-2">Tour Highlights</h5>
+                  <h5 className="text-black/80 text-sm font-medium mb-2">Tour Highlights</h5>
                   <div className="space-y-2">
                     {plantation.highlights.map((highlight, index) => (
                       <motion.div
                         key={index}
-                        className="flex items-start gap-2 p-2 bg-white/5 rounded text-white/70 text-sm"
+                        className="flex items-start gap-2 p-2 bg-white/5 rounded text-black/70 text-sm"
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}

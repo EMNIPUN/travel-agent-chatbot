@@ -51,6 +51,28 @@ function App() {
       setChatHistory(prev => [...prev.filter(msg => msg.text !== "Thinking..." && msg.imageUrl !== "/icons/more.gif"), {role: "model", text, imageUrl}]);
     }
 
+    // Enhanced response processing function
+    const processResponse = (rawText) => {
+      // Clean up HTML tags but preserve markdown-style formatting
+      let cleanText = rawText.replace(/<[^>]*>/g, '').trim();
+      
+      // Improve formatting for better readability
+      cleanText = cleanText
+        // Ensure proper spacing after sections
+        .replace(/([.!?])\s*([A-Z])/g, '$1\n\n$2')
+        // Format bullet points consistently
+        .replace(/[•·]/g, '•')
+        // Ensure proper spacing around numbered lists
+        .replace(/(\d+\.)\s*/g, '\n$1 ')
+        // Clean up multiple newlines
+        .replace(/\n{3,}/g, '\n\n')
+        // Format headings (text followed by colon)
+        .replace(/^([A-Z][^:]+:)/gm, '\n$1')
+        .trim();
+      
+      return cleanText;
+    };
+
     history = history.map(({role, text}) => ({role, parts: [{text}]}));
 
     const requestOptions = {
@@ -67,8 +89,9 @@ function App() {
       const response = await fetch(import.meta.env.VITE_API_URL, requestOptions);
       const data = await response.json();
       if(!response.ok) throw new Error(data.error.message) || "Something went wrong";
-      const apiresponseText = data.candidates[0].content.parts[0].text.replace(/<[^>]*>/g, '').trim();
-      updateHistory(apiresponseText);
+      const rawResponseText = data.candidates[0].content.parts[0].text;
+      const processedText = processResponse(rawResponseText);
+      updateHistory(processedText);
     } catch(error) {
       console.log(error);
     }
@@ -196,11 +219,11 @@ function App() {
                   }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
-                  <Plane className="w-7 h-7 text-black" />
+                  <Plane className="w-7 h-7 text-white" />
                 </motion.div>
                 <div>
                   <h1 className="text-2xl font-bold text-black flex items-center gap-2">
-                    TravelBot AI 
+                    CeylonGuide
                     <motion.span 
                       className="text-xl"
                       animate={{ scale: [1, 1.1, 1] }}

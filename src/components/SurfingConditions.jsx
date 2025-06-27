@@ -113,8 +113,8 @@ const SurfingConditions = () => {
           <Waves className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h3 className="font-semibold text-white">Surf Conditions</h3>
-          <p className="text-white/70 text-sm">Live surf reports</p>
+          <h3 className="font-semibold text-black">Surf Conditions</h3>
+          <p className="text-black/70 text-sm">Live surf reports</p>
         </div>
       </div>
 
@@ -132,8 +132,8 @@ const SurfingConditions = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="text-white font-medium text-sm">{spot.name}</div>
-            <div className="text-white/60 text-xs">{spot.region}</div>
+            <div className="text-black font-medium text-sm">{spot.name}</div>
+            <div className="text-black/60 text-xs">{spot.region}</div>
           </motion.button>
         ))}
       </div>
@@ -154,7 +154,7 @@ const SurfingConditions = () => {
                 {/* Current Conditions */}
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-lg p-4 border border-blue-400/30">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-white font-semibold">{spot.name}</h4>
+                    <h4 className="text-gray-700 font-semibold">{spot.name}</h4>
                     <span className={`text-xs px-2 py-1 rounded-full ${getConditionsColor(spot.conditions)}`}>
                       {spot.conditions}
                     </span>
@@ -163,30 +163,30 @@ const SurfingConditions = () => {
                   <div className="grid grid-cols-2 gap-3 mb-3">
                     <div className="flex items-center gap-2">
                       <Waves className="w-4 h-4 text-blue-400" />
-                      <span className="text-white/80 text-sm">{spot.waveHeight}</span>
+                      <span className="text-gray-700 text-sm">{spot.waveHeight}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Wind className="w-4 h-4 text-blue-400" />
-                      <span className="text-white/80 text-sm">{spot.windDirection}</span>
+                      <span className="text-gray-700 text-sm">{spot.windDirection}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Thermometer className="w-4 h-4 text-blue-400" />
-                      <span className="text-white/80 text-sm">{spot.waterTemp}</span>
+                      <span className="text-gray-700 text-sm">{spot.waterTemp}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Activity className="w-4 h-4 text-blue-400" />
-                      <span className="text-white/80 text-sm">{spot.level}</span>
+                      <span className="text-gray-700 text-sm">{spot.level}</span>
                     </div>
                   </div>
 
-                  <div className="text-white/60 text-xs">
+                  <div className="text-gray-700 text-xs">
                     Best Season: {spot.season}
                   </div>
                 </div>
 
                 {/* 3-Day Forecast */}
                 <div>
-                  <h5 className="text-white/80 text-sm font-medium mb-2">3-Day Forecast</h5>
+                  <h5 className="text-black/80 text-sm font-medium mb-2">3-Day Forecast</h5>
                   <div className="space-y-2">
                     {spot.forecast.map((day, index) => (
                       <motion.div
@@ -195,9 +195,9 @@ const SurfingConditions = () => {
                         whileHover={{ x: 5 }}
                       >
                         <div className="flex items-center gap-3">
-                          <div className="text-white font-medium text-sm w-16">{day.day}</div>
-                          <div className="text-white/70 text-sm">{day.wave}</div>
-                          <div className="text-white/60 text-xs">{day.wind}</div>
+                          <div className="text-black font-medium text-sm w-16">{day.day}</div>
+                          <div className="text-black/70 text-sm">{day.wave}</div>
+                          <div className="text-black/60 text-xs">{day.wind}</div>
                         </div>
                         <div className={`text-xs px-2 py-1 rounded-full font-medium ${getRatingColor(day.rating)}`}>
                           {day.rating}/10
@@ -209,7 +209,7 @@ const SurfingConditions = () => {
 
                 {/* Surf Breaks */}
                 <div>
-                  <h5 className="text-white/80 text-sm font-medium mb-2">Surf Breaks</h5>
+                  <h5 className="text-black/80 text-sm font-medium mb-2">Surf Breaks</h5>
                   <div className="space-y-2">
                     {spot.breaks.map((surfBreak, index) => (
                       <motion.div
@@ -220,10 +220,10 @@ const SurfingConditions = () => {
                         transition={{ delay: index * 0.1 }}
                       >
                         <div>
-                          <div className="text-white font-medium text-sm">{surfBreak.name}</div>
-                          <div className="text-white/60 text-xs">{surfBreak.type}</div>
+                          <div className="text-black font-medium text-sm">{surfBreak.name}</div>
+                          <div className="text-black/60 text-xs">{surfBreak.type}</div>
                         </div>
-                        <span className="text-white/70 text-xs bg-white/10 px-2 py-1 rounded">
+                        <span className="text-black/70 text-xs bg-black/10 px-2 py-1 rounded">
                           {surfBreak.difficulty}
                         </span>
                       </motion.div>
