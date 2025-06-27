@@ -1,14 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", serif;
+    font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
-    font-weight: <weight>;
     font-style: normal;
+}
+
+body {
+    overflow: hidden;
+}
+
+/* Ensure proper flex behavior */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-height: 0;
+}
+
+.chat-messages {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.chat-input {
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+}
+
+/* Custom scrollbar for chat area */
+.chat-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Travel themed gradient background */
+.travel-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: 
+        radial-gradient(at 20% 80%, hsla(26,85%, 62%, 0.1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(189,85%, 52%, 0.1) 0px, transparent 50%),
+        radial-gradient(at 40% 40%, hsla(355,85%, 65%, 0.1) 0px, transparent 50%);
+}
+
+.travel-bg-alt {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+/* Sri Lankan flag colors */
+.sl-orange { color: #FF7800; }
+.sl-green { color: #006A4E; }
+.sl-maroon { color: #8B0000; }
+.sl-yellow { color: #FFD700; }
+
+/* Glass morphism effect */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
